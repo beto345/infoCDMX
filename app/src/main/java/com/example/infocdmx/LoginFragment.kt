@@ -7,9 +7,10 @@ import android.view.View
 import android.view.ViewGroup
 import com.example.infocdmx.databinding.FragmentLoginBinding
 import androidx.navigation.fragment.findNavController
+import androidx.core.widget.addTextChangedListener
 
 class LoginFragment : Fragment() {
-    private var _binding : FragmentLoginBinding? = null
+    private var _binding: FragmentLoginBinding? = null
     private val binding get() = _binding!!
 
     override fun onCreateView(
@@ -22,16 +23,39 @@ class LoginFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        setupValidation()
+    }
 
+    private fun setupValidation() {
+        binding.buttonLogin.isEnabled = false
 
-        binding.textViewRegister.setOnClickListener {
-            findNavController().navigate(R.id.action_loginFragment_to_registerFragment)
+        binding.editTextEmail.addTextChangedListener {
+            validateFields()
         }
-        
-        // Aquí puedes agregar la lógica para el botón de login
-        binding.buttonLogin.setOnClickListener {
-            // Lógica de inicio de sesión
+        binding.editTextPassword.addTextChangedListener {
+            validateFields()
         }
+    }
+
+    private fun validateFields() {
+        val email = binding.editTextEmail.text.toString().trim()
+        val password = binding.editTextPassword.text.toString().trim()
+
+        val isEmailValid = isEmailValid(email)
+        val isPasswordValid = password.length >= 8
+
+        binding.editTextEmail.error =
+            if (email.isEmpty() || isEmailValid) null else "Correo Invalido"
+
+        binding.editTextPassword.error =
+            if (password.isEmpty() || isPasswordValid) null else "Minimo 8 caracteres"
+
+        binding.buttonLogin.isEnabled =
+            email.isNotEmpty() && password.isNotEmpty() && isEmailValid && isPasswordValid
+    }
+
+    private fun isEmailValid(email: String): Boolean {
+        return android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()
     }
 
     override fun onDestroyView() {

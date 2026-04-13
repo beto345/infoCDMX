@@ -44,6 +44,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginBottom="8dp"
+        android:fontFamily="@font/abeezee"
         android:text="Bienvenido!"
         android:textColor="#000000"
         android:textSize="24sp"
@@ -59,6 +60,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
+        android:fontFamily="@font/abeezee"
         android:text="Inicia sesión para continuar"
         android:textColor="#000000"
         android:textSize="14sp"
@@ -93,9 +95,10 @@
             android:id="@+id/editTextEmail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/ar_one_sans"
+            android:imeOptions="actionNext"
             android:inputType="textEmailAddress"
-            android:maxLines="1"
-            android:imeOptions="actionNext" />
+            android:maxLines="1" />
     </com.google.android.material.textfield.TextInputLayout>
 
 
@@ -117,9 +120,10 @@
             android:id="@+id/editTextPassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/ar_one_sans"
+            android:imeOptions="actionDone"
             android:inputType="textPassword"
-            android:maxLines="1"
-            android:imeOptions="actionDone" />
+            android:maxLines="1" />
     </com.google.android.material.textfield.TextInputLayout>
 
 
@@ -130,6 +134,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
+        android:fontFamily="@font/abeezee"
         android:minHeight="32dp"
         android:text="Ingresar"
         android:textSize="16sp"
@@ -147,11 +152,12 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginBottom="16dp"
+        android:clickable="true"
+        android:focusable="true"
+        android:fontFamily="@font/abeezee"
         android:text="Registrarse"
         android:textColor="#4FC3F7"
         android:textSize="14sp"
-        android:clickable="true"
-        android:focusable="true"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
@@ -162,11 +168,12 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="16dp"
+        android:clickable="true"
+        android:focusable="true"
+        android:fontFamily="@font/abeezee"
         android:text="Restablecer contraseña"
         android:textColor="#4FC3F7"
         android:textSize="14sp"
-        android:clickable="true"
-        android:focusable="true"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
