@@ -1,16 +1,17 @@
 package com.example.infocdmx
 
 import android.os.Bundle
+import android.util.Patterns
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.widget.addTextChangedListener
 import com.example.infocdmx.databinding.FragmentLoginBinding
 import androidx.navigation.fragment.findNavController
-import androidx.core.widget.addTextChangedListener
 
 class LoginFragment : Fragment() {
-    private var _binding: FragmentLoginBinding? = null
+    private var _binding : FragmentLoginBinding? = null
     private val binding get() = _binding!!
 
     override fun onCreateView(
@@ -23,7 +24,17 @@ class LoginFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        // Navegar al registro al hacer clic en el texto de registro
+        binding.textViewRegister.setOnClickListener {
+            findNavController().navigate(R.id.action_loginFragment_to_registerFragment)
+        }
+        
         setupValidation()
+
+        binding.buttonLogin.setOnClickListener {
+            // Lógica de inicio de sesión exitosa
+        }
     }
 
     private fun setupValidation() {
@@ -41,21 +52,17 @@ class LoginFragment : Fragment() {
         val email = binding.editTextEmail.text.toString().trim()
         val password = binding.editTextPassword.text.toString().trim()
 
-        val isEmailValid = isEmailValid(email)
+        val isEmailValid = isValidEmail(email)
         val isPasswordValid = password.length >= 8
 
-        binding.editTextEmail.error =
-            if (email.isEmpty() || isEmailValid) null else "Correo Invalido"
+        binding.tilEmail.error = if (email.isEmpty() || isEmailValid) null else "Correo inválido"
+        binding.tilPassword.error = if (password.isEmpty() || isPasswordValid) null else "Mínimo 8 caracteres"
 
-        binding.editTextPassword.error =
-            if (password.isEmpty() || isPasswordValid) null else "Minimo 8 caracteres"
-
-        binding.buttonLogin.isEnabled =
-            email.isNotEmpty() && password.isNotEmpty() && isEmailValid && isPasswordValid
+        binding.buttonLogin.isEnabled = email.isNotEmpty() && password.isNotEmpty() && isEmailValid && isPasswordValid
     }
 
-    private fun isEmailValid(email: String): Boolean {
-        return android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()
+    private fun isValidEmail(email: String): Boolean {
+        return Patterns.EMAIL_ADDRESS.matcher(email).matches()
     }
 
     override fun onDestroyView() {
