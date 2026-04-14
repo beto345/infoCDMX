@@ -9,10 +9,11 @@ import android.view.ViewGroup
 import androidx.core.widget.addTextChangedListener
 import com.example.infocdmx.databinding.FragmentLoginBinding
 import androidx.navigation.fragment.findNavController
-
+import androidx.fragment.app.viewModels
 class LoginFragment : Fragment() {
     private var _binding : FragmentLoginBinding? = null
     private val binding get() = _binding!!
+    private val viewModel by viewModels<SignViewModel>()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
