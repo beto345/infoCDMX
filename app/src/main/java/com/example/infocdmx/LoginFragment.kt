@@ -9,32 +9,42 @@ import android.view.ViewGroup
 import androidx.core.widget.addTextChangedListener
 import com.example.infocdmx.databinding.FragmentLoginBinding
 import androidx.navigation.fragment.findNavController
-import androidx.fragment.app.viewModels
+import com.example.infocdmx.core.FragmentCommunicator
+
 class LoginFragment : Fragment() {
     private var _binding : FragmentLoginBinding? = null
     private val binding get() = _binding!!
-    private val viewModel by viewModels<SignViewModel>()
+
+    private lateinit var communicator: FragmentCommunicator
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentLoginBinding.inflate(inflater, container, false)
+        communicator = requireActivity() as FragmentCommunicator
+        communicator.manageLoader(true)
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        // Navegar al registro al hacer clic en el texto de registro
+
         binding.textViewRegister.setOnClickListener {
             findNavController().navigate(R.id.action_loginFragment_to_registerFragment)
         }
-        
+
+
+        binding.textViewForgotPassword.setOnClickListener {
+            findNavController().navigate(R.id.action_loginFragment_to_resetPasswordFragment)
+        }
+
         setupValidation()
 
         binding.buttonLogin.setOnClickListener {
-            // Lógica de inicio de sesión exitosa
+
+
         }
     }
 

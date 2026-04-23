@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "851376302878",
+    "project_id": "infocdmx-9ac30",
+    "storage_bucket": "infocdmx-9ac30.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:851376302878:android:323438b67e89fc4d50370f",
+        "android_client_info": {
+          "package_name": "com.example.infocdmx"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBJA5ndVcfeloN4pkyAlS9Q76Ct-CRkGsE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

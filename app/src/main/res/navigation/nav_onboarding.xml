@@ -13,6 +13,9 @@
         <action
             android:id="@+id/action_loginFragment_to_registerFragment"
             app:destination="@id/registerFragment" />
+        <action
+            android:id="@+id/action_loginFragment_to_resetPasswordFragment"
+            app:destination="@id/resetPasswordFragment" />
     </fragment>
 
     <fragment
@@ -24,4 +27,10 @@
             android:id="@+id/action_registerFragment_to_loginFragment"
             app:destination="@id/loginFragment" />
     </fragment>
+
+    <fragment
+        android:id="@+id/resetPasswordFragment"
+        android:name="com.example.infocdmx.ResetPasswordFragment"
+        android:label="Restablecer Contraseña"
+        tools:layout="@layout/fragment_reset_password" />
 </navigation>
