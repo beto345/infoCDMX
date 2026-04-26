@@ -1,51 +1,41 @@
 package com.example.infocdmx
 
 import android.os.Bundle
-import android.util.Patterns
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.widget.addTextChangedListener
-import com.example.infocdmx.databinding.FragmentLoginBinding
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.example.infocdmx.core.FragmentCommunicator
+import com.example.infocdmx.databinding.FragmentLoginBinding
 
 class LoginFragment : Fragment() {
-    private var _binding : FragmentLoginBinding? = null
+    private var _binding: FragmentLoginBinding? = null
     private val binding get() = _binding!!
-
+    private val viewModel by viewModels<SignViewModel>()
     private lateinit var communicator: FragmentCommunicator
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View {
+    ): View? {
+        // Inflate the layout for this fragment
         _binding = FragmentLoginBinding.inflate(inflater, container, false)
         communicator = requireActivity() as FragmentCommunicator
-        communicator.manageLoader(true)
-        return binding.root
-    }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-
-
+        setupValidation()
+        binding.buttonLogin.setOnClickListener {
+            findNavController().navigate(R.id.action_loginFragment_to_registerFragment)
+        }
         binding.textViewRegister.setOnClickListener {
             findNavController().navigate(R.id.action_loginFragment_to_registerFragment)
         }
-
-
-        binding.textViewForgotPassword.setOnClickListener {
-            findNavController().navigate(R.id.action_loginFragment_to_resetPasswordFragment)
-        }
-
-        setupValidation()
-
-        binding.buttonLogin.setOnClickListener {
-
-
-        }
+        return binding.root
     }
 
     private fun setupValidation() {
@@ -66,18 +56,14 @@ class LoginFragment : Fragment() {
         val isEmailValid = isValidEmail(email)
         val isPasswordValid = password.length >= 8
 
-        binding.tilEmail.error = if (email.isEmpty() || isEmailValid) null else "Correo inválido"
-        binding.tilPassword.error = if (password.isEmpty() || isPasswordValid) null else "Mínimo 8 caracteres"
+        binding.editTextEmail.error = if (email.isNotEmpty() && isEmailValid) null else "Correo invalido"
+        binding.editTextPassword.error = if (password.isNotEmpty() && isPasswordValid) null else "Minimo 8 caracteres"
 
-        binding.buttonLogin.isEnabled = email.isNotEmpty() && password.isNotEmpty() && isEmailValid && isPasswordValid
+        binding.buttonLogin.isEnabled =
+            email.isNotEmpty() && password.isNotEmpty() && isEmailValid && isPasswordValid
     }
 
     private fun isValidEmail(email: String): Boolean {
-        return Patterns.EMAIL_ADDRESS.matcher(email).matches()
-    }
-
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
+        return android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()
     }
 }
