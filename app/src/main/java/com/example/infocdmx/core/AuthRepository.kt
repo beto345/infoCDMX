@@ -31,8 +31,18 @@ class AuthRepository(): Authentication {
             val result = auth.createUserWithEmailAndPassword(email, password).await()
             result.user
         } catch (e: Exception) {
-            Log.e("Error", "\${e.printStackTrace()}")
+            Log.e("Error", "${e.printStackTrace()}")
             null
+        }
+    }
+
+    override suspend fun requestResetPassword(email: String): Boolean {
+        return try {
+            auth.sendPasswordResetEmail(email).await()
+            true
+        } catch (e: Exception) {
+            Log.e("Error", "${e.printStackTrace()}")
+            false
         }
     }
 }
