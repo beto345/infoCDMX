@@ -1,4 +1,4 @@
-package com.example.soundplay.signup
+package com.example.soundplay.onboarding.signup
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope

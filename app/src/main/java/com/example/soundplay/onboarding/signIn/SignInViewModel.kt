@@ -1,11 +1,9 @@
-package com.example.soundplay
+package com.example.soundplay.onboarding.signIn
 
-import android.util.Log
 import android.util.Patterns
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.soundplay.core.AuthRepository
-import com.example.soundplay.core.Authentication
 import com.example.soundplay.core.ResponseService
 import com.google.firebase.auth.FirebaseUser
 import kotlinx.coroutines.flow.MutableStateFlow
