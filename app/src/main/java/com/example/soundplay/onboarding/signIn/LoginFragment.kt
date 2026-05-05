@@ -1,5 +1,6 @@
 package com.example.soundplay.onboarding.signIn
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -16,6 +17,7 @@ import com.example.soundplay.onboarding.signIn.SignInViewModel
 import com.example.soundplay.core.FragmentCommunicator
 import com.example.soundplay.core.ResponseService
 import com.example.soundplay.databinding.FragmentLoginBinding
+import com.example.soundplay.home.HomeActivity
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.coroutines.launch
 
@@ -79,7 +81,9 @@ class LoginFragment : Fragment() {
                         }
                         is ResponseService.Success -> {
                             communicator.manageLoader(false)
-                            // TODO: navegar a MainActivity
+                            val intent = Intent(requireContext(), HomeActivity::class.java)
+                            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+                            startActivity(intent)
                         }
                         is ResponseService.Error -> {
                             communicator.manageLoader(false)
