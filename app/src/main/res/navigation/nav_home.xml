@@ -3,11 +3,21 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_home"
-    app:startDestination="@id/songsFragment2">
+    app:startDestination="@id/songsFragment">
 
     <fragment
-        android:id="@+id/songsFragment2"
+        android:id="@+id/songsFragment"
         android:name="com.example.soundplay.home.songs.SongsFragment"
         android:label="fragment_songs"
         tools:layout="@layout/fragment_songs" />
+    <fragment
+        android:id="@+id/accountFragment"
+        android:name="com.example.soundplay.home.account.accountFragment"
+        android:label="fragment_account"
+        tools:layout="@layout/fragment_account" />
+    <fragment
+        android:id="@+id/playListsFragment"
+        android:name="com.example.soundplay.home.playLists.PlayListsFragment"
+        android:label="fragment_play_lists"
+        tools:layout="@layout/fragment_play_lists" />
 </navigation>
