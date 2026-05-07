@@ -10,6 +10,7 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
+import com.example.soundplay.R
 import androidx.navigation.fragment.findNavController
 import com.example.soundplay.core.FragmentCommunicator
 import com.example.soundplay.core.ResponseService
@@ -81,7 +82,7 @@ class RegisterFragment : Fragment() {
                         }
                         is ResponseService.Success -> {
                             communicator.manageLoader(false)
-                            // TODO: navegar a pantalla de datos personales
+                            findNavController().navigate(R.id.action_registerFragment_to_personalInfoFragment)
                         }
                         is ResponseService.Error -> {
                             communicator.manageLoader(false)
@@ -95,5 +96,4 @@ class RegisterFragment : Fragment() {
             }
         }
     }
-
 }

@@ -8,4 +8,10 @@
     <string name="signIn">Ingresar</string>
     <string name="register">¿No tienes cuenta? Registrate</string>
     <string name="backToSignIn">¿Ya tienes cuenta? Inicia sesión</string>
+    <string name="firstName">Nombre</string>
+    <string name="lastName">Apellidos</string>
+    <string name="username">Nombre de usuario</string>
+    <string name="phone">Teléfono</string>
+    <string name="birthDate">Fecha de nacimiento</string>
+    <string name="save">Guardar</string>
 </resources>
