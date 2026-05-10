@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
-        android:id="@+id/transporteFragment"
+        android:id="@+id/homeFragment"
         android:icon="@drawable/ic_home"
-        android:title="Inicio" />
+        android:title="@string/home_title" />
     <item
         android:id="@+id/lugaresFragment"
         android:icon="@drawable/ic_place"
-        android:title="Lugares" />
+        android:title="@string/places_title" />
     <item
         android:id="@+id/cuentaFragment"
-        android:icon="@drawable/ic_transporte"
-        android:title="Cuenta" />
+        android:icon="@drawable/ic_account"
+        android:title="@string/account_title" />
 </menu>

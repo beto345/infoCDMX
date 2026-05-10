@@ -18,4 +18,7 @@
     <string name="login_failed">Error al iniciar sesión</string>
     <string name="invalid_username">Nombre de usuario inválido</string>
     <string name="invalid_password">La contraseña debe tener más de 5 caracteres</string>
+    <string name="home_title">Inicio</string>
+    <string name="places_title">Lugares</string>
+    <string name="account_title">Cuenta</string>
 </resources>
