@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/transporteFragment"
+        android:icon="@drawable/ic_home"
+        android:title="Inicio" />
+    <item
+        android:id="@+id/lugaresFragment"
+        android:icon="@drawable/ic_place"
+        android:title="Lugares" />
+    <item
+        android:id="@+id/cuentaFragment"
+        android:icon="@drawable/ic_transporte"
+        android:title="Cuenta" />
+</menu>

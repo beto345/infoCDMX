@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_home"
+    app:startDestination="@id/transporteFragment">
+
+    <fragment
+        android:id="@+id/transporteFragment"
+        android:name="com.example.infocdmx.home.transporte.TransporteFragment"
+        android:label="Inicio"
+        tools:layout="@layout/fragment_transporte" />
+
+    <fragment
+        android:id="@+id/lugaresFragment"
+        android:name="com.example.infocdmx.home.lugares.LugaresFragment"
+        android:label="Lugares"
+        tools:layout="@layout/fragment_lugares" />
+
+    <fragment
+        android:id="@+id/cuentaFragment"
+        android:name="com.example.infocdmx.home.account.accountFragment"
+        android:label="Cuenta"
+        tools:layout="@layout/fragment_cuenta" />
+</navigation>

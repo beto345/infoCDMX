@@ -1,4 +1,4 @@
-package com.example.infocdmx
+package com.example.infocdmx.onboarding
 
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
