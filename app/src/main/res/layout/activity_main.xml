@@ -49,7 +49,7 @@
                 android:padding="24dp"
                 app:lottie_autoPlay="true"
                 app:lottie_loop="true"
-                app:lottie_rawRes="@raw/song" />
+                app:lottie_rawRes="@raw/mapa" />
 
         </com.google.android.material.card.MaterialCardView>
 
