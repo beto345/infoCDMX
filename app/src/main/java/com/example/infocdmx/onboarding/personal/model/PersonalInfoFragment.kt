@@ -12,6 +12,7 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
+import androidx.navigation.fragment.findNavController
 import com.example.infocdmx.core.FragmentCommunicator
 import com.example.infocdmx.core.ResponseService
 import com.example.infocdmx.databinding.FragmentPersonalInfoBinding
@@ -20,7 +21,6 @@ import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.coroutines.launch
 import java.util.Calendar
-import kotlin.getValue
 
 class PersonalInfoFragment : Fragment() {
 
@@ -29,12 +29,10 @@ class PersonalInfoFragment : Fragment() {
     private val viewModel by viewModels<PersonalInfoViewModel>()
     private lateinit var communicator: FragmentCommunicator
 
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
+    ): View {
         _binding = FragmentPersonalInfoBinding.inflate(inflater, container, false)
         communicator = requireActivity() as FragmentCommunicator
         setupValidation()
@@ -45,10 +43,9 @@ class PersonalInfoFragment : Fragment() {
     }
 
     private fun setupValidation() {
-        binding.saveButton.isEnabled = false
+        binding.btnContinuar.isEnabled = false
         binding.firstNameTiet.addTextChangedListener { validateAndEnable() }
         binding.lastNameTiet.addTextChangedListener { validateAndEnable() }
-        binding.usernameTiet.addTextChangedListener { validateAndEnable() }
         binding.phoneTiet.addTextChangedListener { validateAndEnable() }
         binding.birthDateTiet.addTextChangedListener { validateAndEnable() }
     }
@@ -56,18 +53,17 @@ class PersonalInfoFragment : Fragment() {
     private fun validateAndEnable() {
         val firstName = binding.firstNameTiet.text.toString().trim()
         val lastName = binding.lastNameTiet.text.toString().trim()
-        val username = binding.usernameTiet.text.toString().trim()
         val phone = binding.phoneTiet.text.toString().trim()
         val birthDate = binding.birthDateTiet.text.toString().trim()
 
         binding.firstNameTil.error = viewModel.validateFirstName(firstName)
         binding.lastNameTil.error = viewModel.validateLastName(lastName)
-        binding.usernameTil.error = viewModel.validateUsername(username)
         binding.phoneTil.error = viewModel.validatePhone(phone)
         binding.birthDateTil.error = viewModel.validateBirthDate(birthDate)
 
-        binding.saveButton.isEnabled =
-            viewModel.isFormValid(firstName, lastName, username, phone, birthDate)
+        // Usamos firstName como username provisionalmente ya que no está en el diseño
+        binding.btnContinuar.isEnabled =
+            viewModel.isFormValid(firstName, lastName, firstName, phone, birthDate)
     }
 
     private fun setupDatePicker() {
@@ -76,8 +72,9 @@ class PersonalInfoFragment : Fragment() {
             DatePickerDialog(
                 requireContext(),
                 { _, year, month, day ->
-                    val formatted = "%04d-%02d-%02d".format(year, month + 1, day)
+                    val formatted = "%02d / %02d / %04d".format(day, month + 1, year)
                     binding.birthDateTiet.setText(formatted)
+                    validateAndEnable()
                 },
                 cal.get(Calendar.YEAR) - 18,
                 cal.get(Calendar.MONTH),
@@ -89,7 +86,10 @@ class PersonalInfoFragment : Fragment() {
     }
 
     private fun setupClickListeners() {
-        binding.saveButton.setOnClickListener {
+        binding.btnBack.setOnClickListener {
+            findNavController().navigateUp()
+        }
+        binding.btnContinuar.setOnClickListener {
             val uid = FirebaseAuth.getInstance().currentUser?.uid
             if (uid == null) {
                 Snackbar.make(binding.root, "Sesión inválida", Snackbar.LENGTH_LONG).show()
@@ -99,7 +99,7 @@ class PersonalInfoFragment : Fragment() {
                 uid = uid,
                 firstName = binding.firstNameTiet.text.toString().trim(),
                 lastName = binding.lastNameTiet.text.toString().trim(),
-                username = binding.usernameTiet.text.toString().trim(),
+                username = binding.firstNameTiet.text.toString().trim(), // Provisional
                 phone = binding.phoneTiet.text.toString().trim(),
                 birthDate = binding.birthDateTiet.text.toString().trim()
             )
@@ -113,7 +113,7 @@ class PersonalInfoFragment : Fragment() {
                     when (state) {
                         is ResponseService.Loading -> {
                             communicator.manageLoader(true)
-                            binding.saveButton.isEnabled = false
+                            binding.btnContinuar.isEnabled = false
                         }
                         is ResponseService.Success -> {
                             communicator.manageLoader(false)
@@ -123,7 +123,7 @@ class PersonalInfoFragment : Fragment() {
                         }
                         is ResponseService.Error -> {
                             communicator.manageLoader(false)
-                            binding.saveButton.isEnabled = true
+                            binding.btnContinuar.isEnabled = true
                             Snackbar.make(binding.root, state.error, Snackbar.LENGTH_LONG).show()
                         }
                         null -> Unit
@@ -131,5 +131,10 @@ class PersonalInfoFragment : Fragment() {
                 }
             }
         }
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 }

@@ -26,7 +26,16 @@
         <action
             android:id="@+id/action_registerFragment_to_loginFragment"
             app:destination="@id/loginFragment" />
+        <action
+            android:id="@+id/action_registerFragment_to_personalInfoFragment"
+            app:destination="@id/personalInfoFragment" />
     </fragment>
+
+    <fragment
+        android:id="@+id/personalInfoFragment"
+        android:name="com.example.infocdmx.onboarding.personal.model.PersonalInfoFragment"
+        android:label="Información Personal"
+        tools:layout="@layout/fragment_personal_info" />
 
     <fragment
         android:id="@+id/resetPasswordFragment"

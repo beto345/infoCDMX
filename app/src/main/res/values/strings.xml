@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">SoundPlay</string>
+    <string name="app_name">INFOCDMX</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="mail">Correo:</string>
@@ -21,4 +21,25 @@
     <string name="home_title">Inicio</string>
     <string name="places_title">Lugares</string>
     <string name="account_title">Cuenta</string>
+    <string name="personal_data_title">Datos personales</string>
+    <string name="step_1_of_2">Paso 1 de 2</string>
+    <string name="step_2_of_2">Paso 2 de 2</string>
+    <string name="almost_ready"> · Casi listo, gamer</string>
+    <string name="tell_us_about_you">Cuéntanos un poco sobre ti</string>
+    <string name="hint_names">Nombre(s)</string>
+    <string name="hint_lastnames">Apellidos</string>
+    <string name="hint_cellphone">Número de celular</string>
+    <string name="hint_birthdate">Fecha de nacimiento</string>
+    <string name="tap_to_open_calendar">Toca para abrir el calendario</string>
+    <string name="start_exploring">Empezar a explorar</string>
+    <string name="my_account">Mi cuenta</string>
+    <string name="items_in_list">Elementos en mi lista</string>
+    <string name="saved_titles">elementos guardados</string>
+    <string name="personal_info_header">INFORMACIÓN PERSONAL</string>
+    <string name="full_name">Nombre completo</string>
+    <string name="cellphone">Celular</string>
+    <string name="tap_to_edit">Tap para editar</string>
+    <string name="settings">Configuración</string>
+    <string name="settings_desc">Notificaciones, privacidad, idioma</string>
+    <string name="logout">Cerrar sesión</string>
 </resources>

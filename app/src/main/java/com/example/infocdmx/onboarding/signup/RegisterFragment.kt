@@ -11,6 +11,7 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
+import com.example.infocdmx.R
 import com.example.infocdmx.core.FragmentCommunicator
 import com.example.infocdmx.core.ResponseService
 import com.example.infocdmx.databinding.FragmentRegisterBinding
@@ -83,10 +84,10 @@ class RegisterFragment : Fragment() {
                             communicator.manageLoader(false)
                             Snackbar.make(
                                 binding.root,
-                                "Cuenta creada. Inicia sesión con tu correo.",
+                                "Cuenta creada exitosamente.",
                                 Snackbar.LENGTH_LONG
                             ).show()
-                            findNavController().navigateUp()
+                            findNavController().navigate(R.id.action_registerFragment_to_personalInfoFragment)
                         }
                         is ResponseService.Error -> {
                             communicator.manageLoader(false)

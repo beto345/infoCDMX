@@ -6,4 +6,6 @@ import com.example.infocdmx.onboarding.personal.model.UserProfile
 interface UserService {
 
     suspend fun saveUserInfo(userProfile: UserProfile): ResponseService<Unit>
+
+    suspend fun getUserInfo(uid: String): ResponseService<UserProfile>
 }

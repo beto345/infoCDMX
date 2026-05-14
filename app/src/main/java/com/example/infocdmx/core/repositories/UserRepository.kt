@@ -21,4 +21,18 @@ class UserRepository: UserService {
             ResponseService.Error("No se pudo crear el perfil: ${e.localizedMessage}")
         }
     }
+
+    override suspend fun getUserInfo(uid: String): ResponseService<UserProfile> = withContext(Dispatchers.IO) {
+        try {
+            val document = userCollection.document(uid).get().await()
+            val userProfile = document.toObject(UserProfile::class.java)
+            if (userProfile != null) {
+                ResponseService.Success(userProfile)
+            } else {
+                ResponseService.Error("Usuario no encontrado")
+            }
+        } catch (e: Exception) {
+            ResponseService.Error("Error al obtener datos: ${e.localizedMessage}")
+        }
+    }
 }

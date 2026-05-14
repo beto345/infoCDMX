@@ -15,7 +15,7 @@ class SignViewModel : ViewModel() {
 
     private val repository = AuthRepository()
 
-    // --- Estados observables (uno por flujo) ---
+
 
     private val _signInState = MutableStateFlow<ResponseService<FirebaseUser>?>(null)
     val signInState: StateFlow<ResponseService<FirebaseUser>?> = _signInState.asStateFlow()
@@ -26,7 +26,7 @@ class SignViewModel : ViewModel() {
     private val _resetState = MutableStateFlow<ResponseService<Unit>?>(null)
     val resetState: StateFlow<ResponseService<Unit>?> = _resetState.asStateFlow()
 
-    // --- Validaciones de campos ---
+
 
     fun validateEmail(email: String): String? {
         if (email.isBlank()) return "El correo es requerido"
@@ -57,7 +57,7 @@ class SignViewModel : ViewModel() {
     fun isResetFormValid(email: String): Boolean =
         validateEmail(email) == null
 
-    // --- Operaciones ---
+
 
     fun requestLogin(email: String, password: String) {
         viewModelScope.launch {
