@@ -25,7 +25,7 @@ class AuthRepository : Authentication {
         } catch (e: FirebaseAuthException) {
             ResponseService.Error(e.localizedMessage ?: "Error de autenticación")
         } catch (e: Exception) {
-            ResponseService.Error("Error inesperado. Intenta de nuevo")
+            ResponseService.Error("Error inesperado: ${e.localizedMessage}")
         }
     }
     override suspend fun requestSignUp(
@@ -41,7 +41,7 @@ class AuthRepository : Authentication {
         } catch (e: FirebaseAuthWeakPasswordException) {
             ResponseService.Error("La contraseña es muy debil")
         } catch (e: Exception) {
-            ResponseService.Error("Error inesperado. Intenta de nuevo> ${e.localizedMessage}")
+            ResponseService.Error("Error inesperado: ${e.localizedMessage}")
         }
     }
 

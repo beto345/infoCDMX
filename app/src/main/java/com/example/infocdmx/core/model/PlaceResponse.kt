@@ -1,6 +1,8 @@
 package com.example.infocdmx.core.model
 
+import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
+import kotlinx.parcelize.Parcelize
 
 data class PlaceResponse(
     @SerializedName("results") val results: List<Place>,
@@ -8,6 +10,7 @@ data class PlaceResponse(
     @SerializedName("next_page_token") val nextPageToken: String? = null
 )
 
+@Parcelize
 data class Place(
     @SerializedName("place_id") val placeId: String,
     @SerializedName("name") val name: String,
@@ -22,31 +25,36 @@ data class Place(
     @SerializedName("opening_hours") val openingHours: OpeningHours? = null,
     @SerializedName("photos") val photos: List<Photo>? = null,
     @SerializedName("icon") val icon: String? = null
-)
+) : Parcelable
 
+@Parcelize
 data class Geometry(
     @SerializedName("location") val location: Location,
     @SerializedName("viewport") val viewport: Viewport? = null
-)
+) : Parcelable
 
+@Parcelize
 data class Location(
     @SerializedName("lat") val lat: Double,
     @SerializedName("lng") val lng: Double
-)
+) : Parcelable
 
+@Parcelize
 data class Viewport(
     @SerializedName("northeast") val northeast: Location,
     @SerializedName("southwest") val southwest: Location
-)
+) : Parcelable
 
+@Parcelize
 data class OpeningHours(
-    @SerializedName("open_now") val openNow: Boolean? = null,
-    @SerializedName("weekday_text") val weekdayText: List<String>? = null
-)
+    @SerializedName("open_now") val openNow: Boolean? = null
+) : Parcelable
 
+@Parcelize
 data class Photo(
-    @SerializedName("photo_reference") val photoReference: String,
     @SerializedName("height") val height: Int,
     @SerializedName("width") val width: Int,
+    @SerializedName("photo_reference") val photoReference: String,
     @SerializedName("html_attributions") val htmlAttributions: List<String>? = null
-)
+) : Parcelable
+

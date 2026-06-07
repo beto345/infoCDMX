@@ -17,6 +17,7 @@ import com.example.infocdmx.onboarding.signin.SignViewModel
 import com.example.infocdmx.core.FragmentCommunicator
 import com.example.infocdmx.core.ResponseService
 import com.example.infocdmx.databinding.FragmentLoginBinding
+import com.google.firebase.auth.FirebaseAuth
 import com.example.infocdmx.home.HomeActivity
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.coroutines.launch
@@ -34,10 +35,27 @@ class LoginFragment : Fragment() {
     ): View {
         _binding = FragmentLoginBinding.inflate(inflater, container, false)
         communicator = requireActivity() as FragmentCommunicator
+        return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        checkSession()
         setupValidation()
         setupClickListeners()
         observeState()
-        return binding.root
+    }
+
+    private fun checkSession() {
+        if (FirebaseAuth.getInstance().currentUser != null) {
+            navigateToHome()
+        }
+    }
+
+    private fun navigateToHome() {
+        val intent = Intent(requireContext(), HomeActivity::class.java)
+        intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+        startActivity(intent)
     }
 
     private fun setupValidation() {
@@ -80,10 +98,7 @@ class LoginFragment : Fragment() {
                         }
                         is ResponseService.Success -> {
                             communicator.manageLoader(false)
-                            val intent = Intent(requireContext(), HomeActivity::class.java)
-                            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
-                            startActivity(intent)
-
+                            navigateToHome()
                         }
                         is ResponseService.Error -> {
                             communicator.manageLoader(false)

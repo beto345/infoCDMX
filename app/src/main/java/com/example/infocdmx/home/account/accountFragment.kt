@@ -10,6 +10,7 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
+import android.util.Log
 import com.example.infocdmx.core.ResponseService
 import com.example.infocdmx.databinding.FragmentCuentaBinding
 import com.example.infocdmx.onboarding.MainActivity
@@ -18,7 +19,7 @@ import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.coroutines.launch
 
-class accountFragment : Fragment() {
+class AccountFragment : Fragment() {
 
     private var _binding: FragmentCuentaBinding? = null
     private val binding get() = _binding!!
@@ -29,16 +30,24 @@ class accountFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentCuentaBinding.inflate(inflater, container, false)
-        setupClickListeners()
-        observeViewModel()
-        fetchData()
         return binding.root
     }
 
-    private fun fetchData() {
-        val uid = FirebaseAuth.getInstance().currentUser?.uid
-        if (uid != null) {
-            viewModel.fetchUserInfo(uid)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        setupClickListeners()
+        observeViewModel()
+        
+        // Mostrar email desde Auth mientras carga el resto
+        val authUser = FirebaseAuth.getInstance().currentUser
+        if (authUser != null) {
+            binding.tvUserEmail.text = authUser.email
+            fetchData()
+        } else {
+            // Si no hay sesión, volver al login
+            val intent = Intent(requireContext(), MainActivity::class.java)
+            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+            startActivity(intent)
         }
     }
 
@@ -48,7 +57,7 @@ class accountFragment : Fragment() {
                 viewModel.userState.collect { state ->
                     when (state) {
                         is ResponseService.Loading -> {
-                            // Podrías mostrar un mini loader si quieres
+                            // Mostrar cargando si es necesario
                         }
                         is ResponseService.Success -> {
                             updateUI(state.data)
@@ -63,16 +72,20 @@ class accountFragment : Fragment() {
         }
     }
 
+    private fun fetchData() {
+        val user = FirebaseAuth.getInstance().currentUser
+        if (user != null) {
+            viewModel.fetchUserInfo(user.uid)
+        }
+    }
+
     private fun updateUI(user: UserProfile) {
-        val authUser = FirebaseAuth.getInstance().currentUser
-        
-        binding.tvUserName.text = "${user.firstName} ${user.lastName}"
-        binding.tvUserEmail.text = authUser?.email ?: ""
+        binding.tvUserName.text = "@${user.userName}"
         binding.tvDisplayFullName.text = "${user.firstName} ${user.lastName}"
         binding.tvDisplayPhone.text = user.phone
         
         // Inicial del avatar
-        val initial = user.firstName.firstOrNull()?.toString() ?: "U"
+        val initial = if (user.firstName.isNotEmpty()) user.firstName.first().toString() else "U"
         binding.tvAvatarInitial.text = initial.uppercase()
     }
 

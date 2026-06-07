@@ -1,0 +1,74 @@
+[
+  {
+    "place_id": "p1",
+    "name": "Palacio de Bellas Artes",
+    "vicinity": "Av. Juárez S/N, Centro Histórico",
+    "rating": 4.9,
+    "user_ratings_total": 150000,
+    "icon": "",
+    "business_status": "OPERATIONAL",
+    "geometry": {
+      "location": { "lat": 19.4352, "lng": -99.1412 }
+    }
+  },
+  {
+    "place_id": "p2",
+    "name": "Ángel de la Independencia",
+    "vicinity": "Av. Paseo de la Reforma, Juárez",
+    "rating": 4.8,
+    "user_ratings_total": 85000,
+    "icon": "",
+    "business_status": "OPERATIONAL",
+    "geometry": {
+      "location": { "lat": 19.4270, "lng": -99.1677 }
+    }
+  },
+  {
+    "place_id": "p3",
+    "name": "Castillo de Chapultepec",
+    "vicinity": "Bosque de Chapultepec I Secc",
+    "rating": 4.8,
+    "user_ratings_total": 120000,
+    "icon": "",
+    "business_status": "OPERATIONAL",
+    "geometry": {
+      "location": { "lat": 19.4204, "lng": -99.1819 }
+    }
+  },
+  {
+    "place_id": "p4",
+    "name": "Museo Soumaya",
+    "vicinity": "Blvd. Miguel de Cervantes Saavedra 303",
+    "rating": 4.7,
+    "user_ratings_total": 60000,
+    "icon": "",
+    "business_status": "OPERATIONAL",
+    "geometry": {
+      "location": { "lat": 19.4407, "lng": -99.2047 }
+    }
+  },
+  {
+    "place_id": "p5",
+    "name": "Basílica de Guadalupe",
+    "vicinity": "Fray Juan de Zumárraga No. 2, Villa de Guadalupe",
+    "rating": 4.9,
+    "user_ratings_total": 180000,
+    "icon": "",
+    "business_status": "OPERATIONAL",
+    "geometry": {
+      "location": { "lat": 19.4846, "lng": -99.1177 }
+    }
+  },
+  {
+    "place_id": "p6",
+    "name": "Xochimilco",
+    "vicinity": "Embarcadero Nativitas",
+    "rating": 4.6,
+    "user_ratings_total": 75000,
+    "icon": "",
+    "business_status": "OPERATIONAL",
+    "geometry": {
+      "location": { "lat": 19.2558, "lng": -99.1022 }
+    }
+  }
+]

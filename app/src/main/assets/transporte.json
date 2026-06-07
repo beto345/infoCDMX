@@ -1,0 +1,23 @@
+[
+  {
+    "id": "M1",
+    "name": "Línea 1 (Rosa)",
+    "type": "Metro",
+    "color": "#F074A3",
+    "stations": ["Pantitlán", "Zaragoza", "Gómez Farías", "Boulevard Puerto Aéreo", "Balbuena", "Moctezuma", "San Lázaro", "Candelaria", "Merced", "Pino Suárez", "Isabel la Católica", "Salto del Agua", "Balderas", "Cuauhtémoc", "Insurgentes", "Sevilla", "Chapultepec", "Juanacatlán", "Tacubaya", "Observatorio"]
+  },
+  {
+    "id": "M2",
+    "name": "Línea 2 (Azul)",
+    "type": "Metro",
+    "color": "#005596",
+    "stations": ["Cuatro Caminos", "Panteones", "Tacuba", "Cuitláhuac", "Popotla", "Colegio Militar", "Normal", "San Cosme", "Revolución", "Hidalgo", "Bellas Artes", "Allende", "Zócalo/Tenochtitlan", "Pino Suárez", "San Antonio Abad", "Chabacano", "Viaducto", "Xola", "Villa de Cortés", "Nativitas", "Ermita", "General Anaya", "Tasqueña"]
+  },
+  {
+    "id": "MB1",
+    "name": "Línea 1 (Roja)",
+    "type": "Metrobús",
+    "color": "#E30613",
+    "stations": ["Indios Verdes", "Deportivo 18 de Marzo", "Euzkaro", "Potrero", "La Raza", "Circuito", "San Simón", "Manuel González", "Buenavista", "El Chopo", "Revolución", "Plaza de la República", "Reforma", "Hamburgo", "Insurgentes", "Durango", "Álvaro Obregón", "Sonora", "Campeche", "Chilpancingo", "Nuevo León", "La Piedad", "Poliforum", "Nápoles", "Colonia del Valle", "Ciudad de los Deportes", "Félix Cuevas", "Río Churubusco", "Teatro de los Insurgentes", "José María Olloqui", "Francia", "Olivo", "Altavista", "La Bombilla", "Doctor Gálvez", "Ciudad Universitaria", "Centro Cultural Universitario", "Perisur", "Villa Olímpica", "Corregidora", "Ayuntamiento", "Fuentes Brotantes", "Santa Úrsula", "La Joya", "El Caminero"]
+  }
+]

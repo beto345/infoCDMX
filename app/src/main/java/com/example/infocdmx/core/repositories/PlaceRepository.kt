@@ -1,35 +1,36 @@
 package com.example.infocdmx.core.repositories
 
+import android.content.Context
 import com.example.infocdmx.core.ResponseService
 import com.example.infocdmx.core.model.Place
-import com.example.infocdmx.core.network.ApiClient
+import com.example.infocdmx.core.model.PlaceResponse
 import com.example.infocdmx.core.network.PlaceService
+import com.google.gson.Gson
+import com.google.gson.reflect.TypeToken
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
+import java.io.InputStreamReader
 
 class PlaceRepository : PlaceService {
-    private val api = ApiClient.placeApi
 
-    override suspend fun getPlace(limit: Int): ResponseService<List<Place>> =
+    override suspend fun getPlace(context: Context, limit: Int): ResponseService<List<Place>> =
         withContext(Dispatchers.IO) {
             try {
-                val response = api.getPlaces(
-                    apiKey = ApiClient.CLIENT_ID,
-                    limit = limit
-                )
-                if (response.isSuccessful) {
-                    val body = response.body()
-                    if (body != null) {
-                        ResponseService.Success(body.results)
-                    } else {
-                        ResponseService.Error("Respuesta vacía del servidor")
-                    }
+                // Priorizamos el JSON local como solicitado para tener datos "más completos" y con imágenes
+                val inputStream = context.assets.open("lugares.json")
+                val reader = InputStreamReader(inputStream)
+                val type = object : TypeToken<List<Place>>() {}.type
+                val places: List<Place> = Gson().fromJson(reader, type)
+                reader.close()
+                
+                if (places.isNotEmpty()) {
+                    ResponseService.Success(places.take(limit))
                 } else {
-                    ResponseService.Error("Error ${response.code()}: ${response.message()}")
+                    ResponseService.Error("No se encontraron lugares en el archivo local")
                 }
             } catch (e: Exception) {
                 ResponseService.Error(
-                    "No se pudieron cargar los lugares: ${e.localizedMessage}"
+                    "Error al cargar lugares desde el JSON: ${e.localizedMessage}"
                 )
             }
         }

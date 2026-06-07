@@ -46,6 +46,7 @@ class PersonalInfoFragment : Fragment() {
         binding.btnContinuar.isEnabled = false
         binding.firstNameTiet.addTextChangedListener { validateAndEnable() }
         binding.lastNameTiet.addTextChangedListener { validateAndEnable() }
+        binding.usernameTiet.addTextChangedListener { validateAndEnable() }
         binding.phoneTiet.addTextChangedListener { validateAndEnable() }
         binding.birthDateTiet.addTextChangedListener { validateAndEnable() }
     }
@@ -53,17 +54,18 @@ class PersonalInfoFragment : Fragment() {
     private fun validateAndEnable() {
         val firstName = binding.firstNameTiet.text.toString().trim()
         val lastName = binding.lastNameTiet.text.toString().trim()
+        val username = binding.usernameTiet.text.toString().trim()
         val phone = binding.phoneTiet.text.toString().trim()
         val birthDate = binding.birthDateTiet.text.toString().trim()
 
         binding.firstNameTil.error = viewModel.validateFirstName(firstName)
         binding.lastNameTil.error = viewModel.validateLastName(lastName)
+        binding.usernameTil.error = viewModel.validateUsername(username)
         binding.phoneTil.error = viewModel.validatePhone(phone)
         binding.birthDateTil.error = viewModel.validateBirthDate(birthDate)
 
-        // Usamos firstName como username provisionalmente ya que no está en el diseño
         binding.btnContinuar.isEnabled =
-            viewModel.isFormValid(firstName, lastName, firstName, phone, birthDate)
+            viewModel.isFormValid(firstName, lastName, username, phone, birthDate)
     }
 
     private fun setupDatePicker() {
@@ -99,7 +101,7 @@ class PersonalInfoFragment : Fragment() {
                 uid = uid,
                 firstName = binding.firstNameTiet.text.toString().trim(),
                 lastName = binding.lastNameTiet.text.toString().trim(),
-                username = binding.firstNameTiet.text.toString().trim(), // Provisional
+                username = binding.usernameTiet.text.toString().trim(),
                 phone = binding.phoneTiet.text.toString().trim(),
                 birthDate = binding.birthDateTiet.text.toString().trim()
             )

@@ -8,18 +8,33 @@
     <fragment
         android:id="@+id/homeFragment"
         android:name="com.example.infocdmx.home.transporte.TransporteFragment"
-        android:label="@string/home_title"
+        android:label="Transporte"
         tools:layout="@layout/fragment_transporte" />
 
     <fragment
         android:id="@+id/lugaresFragment"
-        android:name="com.example.infocdmx.home.lugares.LugaresFragment"
-        android:label="@string/places_title"
-        tools:layout="@layout/fragment_lugares" />
+        android:name="com.example.infocdmx.home.places.LugaresFragment"
+        android:label="Lugares"
+        tools:layout="@layout/fragment_lugares">
+        <action
+            android:id="@+id/action_lugaresFragment_to_placeDetailFragment"
+            app:destination="@id/placeDetailFragment" />
+    </fragment>
 
     <fragment
         android:id="@+id/cuentaFragment"
-        android:name="com.example.infocdmx.home.account.accountFragment"
-        android:label="@string/account_title"
+        android:name="com.example.infocdmx.home.account.AccountFragment"
+        android:label="Cuenta"
         tools:layout="@layout/fragment_cuenta" />
+
+    <fragment
+        android:id="@+id/placeDetailFragment"
+        android:name="com.example.infocdmx.home.placeDetail.PlaceDetailFragment"
+        android:label="Detalle del Lugar"
+        tools:layout="@layout/fragment_place_detail">
+        <argument
+            android:name="place"
+            app:argType="com.example.infocdmx.core.model.Place" />
+    </fragment>
+
 </navigation>

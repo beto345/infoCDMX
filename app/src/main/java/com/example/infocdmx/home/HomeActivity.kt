@@ -5,12 +5,14 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.core.view.isVisible
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
 import com.example.infocdmx.R
+import com.example.infocdmx.core.FragmentCommunicator
 import com.example.infocdmx.databinding.ActivityHomeBinding
 
-class HomeActivity : AppCompatActivity() {
+class HomeActivity : AppCompatActivity(), FragmentCommunicator {
 
     private lateinit var binding: ActivityHomeBinding
 
@@ -34,5 +36,9 @@ class HomeActivity : AppCompatActivity() {
             .findFragmentById(R.id.navHostFragment) as NavHostFragment
         val navController = navHostFragment.navController
         binding.bottomNavigationView.setupWithNavController(navController)
+    }
+
+    override fun manageLoader(isVisible: Boolean){
+        binding.loaderView.isVisible = isVisible
     }
 }
