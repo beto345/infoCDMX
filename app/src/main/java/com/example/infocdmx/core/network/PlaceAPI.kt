@@ -6,7 +6,7 @@ import retrofit2.http.GET
 import retrofit2.http.Query
 
 interface PlaceAPI {
-    @GET("api.mockbin.io/")
+    @GET("textsearch/json")
     suspend fun getPlaces(
         @Query("key") apiKey: String,
         @Query("query") query: String = "lugares turisticos cdmx",

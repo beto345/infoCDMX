@@ -22,7 +22,7 @@ class PlaceRepository : PlaceService {
                 val type = object : TypeToken<List<Place>>() {}.type
                 val places: List<Place> = Gson().fromJson(reader, type)
                 reader.close()
-                
+
                 if (places.isNotEmpty()) {
                     ResponseService.Success(places.take(limit))
                 } else {

@@ -9,7 +9,11 @@
         android:id="@+id/homeFragment"
         android:name="com.example.infocdmx.home.transporte.TransporteFragment"
         android:label="Transporte"
-        tools:layout="@layout/fragment_transporte" />
+        tools:layout="@layout/fragment_transporte">
+        <action
+            android:id="@+id/action_homeFragment_to_estacionesFragment"
+            app:destination="@id/estacionesFragment" />
+    </fragment>
 
     <fragment
         android:id="@+id/lugaresFragment"
@@ -36,5 +40,11 @@
             android:name="place"
             app:argType="com.example.infocdmx.core.model.Place" />
     </fragment>
+
+    <fragment
+        android:id="@+id/estacionesFragment"
+        android:name="com.example.infocdmx.home.estaciones.EstacionesFragment"
+        android:label="Estaciones"
+        tools:layout="@layout/fragment_estaciones" />
 
 </navigation>

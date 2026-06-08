@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingHorizontal="16dp"
+    android:paddingVertical="12dp">
+
+    <View
+        android:id="@+id/viewEstacionDot"
+        android:layout_width="10dp"
+        android:layout_height="10dp"
+        android:background="#1F4E79"
+        app:layout_constraintTop_toTopOf="@id/tvEstacionNombre"
+        app:layout_constraintBottom_toBottomOf="@id/tvEstacionNombre"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/tvEstacionNombre"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:textSize="15sp"
+        android:textColor="#1A1A1A"
+        android:layout_marginStart="14dp"
+        app:layout_constraintStart_toEndOf="@id/viewEstacionDot"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="Chapultepec" />
+
+    <TextView
+        android:id="@+id/tvEstacionSub"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:textSize="12sp"
+        android:textColor="#777777"
+        android:layout_marginStart="14dp"
+        android:layout_marginTop="2dp"
+        app:layout_constraintStart_toEndOf="@id/viewEstacionDot"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvEstacionNombre"
+        tools:text="Subterráneo · Cuauhtémoc · CETRAM" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,74 +1,110 @@
 [
   {
-    "place_id": "p1",
+    "place_id": "cdmx_001",
     "name": "Palacio de Bellas Artes",
     "vicinity": "Av. Juárez S/N, Centro Histórico",
-    "rating": 4.9,
-    "user_ratings_total": 150000,
-    "icon": "",
-    "business_status": "OPERATIONAL",
     "geometry": {
-      "location": { "lat": 19.4352, "lng": -99.1412 }
-    }
+      "location": {
+        "lat": 19.4352,
+        "lng": -99.1413
+      }
+    },
+    "icon": "https://commons.wikimedia.org/wiki/Special:FilePath/Palacio_de_Bellas_Artes_CDMX.JPG?width=600"
   },
   {
-    "place_id": "p2",
+    "place_id": "cdmx_002",
     "name": "Ángel de la Independencia",
     "vicinity": "Av. Paseo de la Reforma, Juárez",
-    "rating": 4.8,
-    "user_ratings_total": 85000,
-    "icon": "",
-    "business_status": "OPERATIONAL",
     "geometry": {
-      "location": { "lat": 19.4270, "lng": -99.1677 }
-    }
+      "location": {
+        "lat": 19.427,
+        "lng": -99.1677
+      }
+    },
+    "icon": "https://commons.wikimedia.org/wiki/Special:FilePath/%C3%81ngel_De_La_Independencia._Ciudad_de_M%C3%A9xico.jpg?width=600"
   },
   {
-    "place_id": "p3",
+    "place_id": "cdmx_003",
     "name": "Castillo de Chapultepec",
     "vicinity": "Bosque de Chapultepec I Secc",
-    "rating": 4.8,
-    "user_ratings_total": 120000,
-    "icon": "",
-    "business_status": "OPERATIONAL",
     "geometry": {
-      "location": { "lat": 19.4204, "lng": -99.1819 }
-    }
+      "location": {
+        "lat": 19.4204,
+        "lng": -99.1819
+      }
+    },
+    "icon": "https://commons.wikimedia.org/wiki/Special:FilePath/Castillo_de_Chapultepec_01.JPG?width=600"
   },
   {
-    "place_id": "p4",
+    "place_id": "cdmx_004",
     "name": "Museo Soumaya",
     "vicinity": "Blvd. Miguel de Cervantes Saavedra 303",
-    "rating": 4.7,
-    "user_ratings_total": 60000,
-    "icon": "",
-    "business_status": "OPERATIONAL",
     "geometry": {
-      "location": { "lat": 19.4407, "lng": -99.2047 }
-    }
+      "location": {
+        "lat": 19.4407,
+        "lng": -99.2045
+      }
+    },
+    "icon": "https://commons.wikimedia.org/wiki/Special:FilePath/Museo_Soumaya_Mexico_City_Exterior.JPG?width=600"
   },
   {
-    "place_id": "p5",
+    "place_id": "cdmx_005",
     "name": "Basílica de Guadalupe",
     "vicinity": "Fray Juan de Zumárraga No. 2, Villa de Guadalupe",
-    "rating": 4.9,
-    "user_ratings_total": 180000,
-    "icon": "",
-    "business_status": "OPERATIONAL",
     "geometry": {
-      "location": { "lat": 19.4846, "lng": -99.1177 }
-    }
+      "location": {
+        "lat": 19.4847,
+        "lng": -99.1176
+      }
+    },
+    "icon": "https://commons.wikimedia.org/wiki/Special:FilePath/Museo_Basilica_de_Guadalupe.JPG?width=600"
   },
   {
-    "place_id": "p6",
+    "place_id": "cdmx_006",
     "name": "Xochimilco",
     "vicinity": "Embarcadero Nativitas",
-    "rating": 4.6,
-    "user_ratings_total": 75000,
-    "icon": "",
-    "business_status": "OPERATIONAL",
     "geometry": {
-      "location": { "lat": 19.2558, "lng": -99.1022 }
-    }
+      "location": {
+        "lat": 19.2575,
+        "lng": -99.105
+      }
+    },
+    "icon": "https://commons.wikimedia.org/wiki/Special:FilePath/Trajineras_en_embarcadero_de_Cuemanco.JPG?width=600"
+  },
+  {
+    "place_id": "cdmx_007",
+    "name": "Torre Latinoamericana",
+    "vicinity": "Eje Central Lázaro Cárdenas 2, Centro",
+    "geometry": {
+      "location": {
+        "lat": 19.4339,
+        "lng": -99.1403
+      }
+    },
+    "icon": "https://commons.wikimedia.org/wiki/Special:FilePath/La_Torre_Latinoamericana%2C_Ciudad_de_M%C3%A9xico.jpg?width=600"
+  },
+  {
+    "place_id": "cdmx_008",
+    "name": "Monumento a la Revolución",
+    "vicinity": "Plaza de la República S/N, Tabacalera",
+    "geometry": {
+      "location": {
+        "lat": 19.4361,
+        "lng": -99.1547
+      }
+    },
+    "icon": "https://commons.wikimedia.org/wiki/Special:FilePath/Monumento_a_la_Revoluci%C3%B3n_CDMX_1.jpg?width=600"
+  },
+  {
+    "place_id": "cdmx_009",
+    "name": "Museo Nacional de Antropología",
+    "vicinity": "Av. Paseo de la Reforma s/n, Bosque de Chapultepec",
+    "geometry": {
+      "location": {
+        "lat": 19.426,
+        "lng": -99.1862
+      }
+    },
+    "icon": "https://commons.wikimedia.org/wiki/Special:FilePath/Museo_Nacional_de_Antropologia_Mexico.JPG?width=600"
   }
 ]
